@@ -8,10 +8,12 @@ public class CharacterComponents : MonoBehaviour
     protected float verticalInput;
 
     protected CharacterController controller;
+    protected CharacterMovement characterMovement;
 
     protected virtual void Start()
     {
         controller = GetComponent<CharacterController>();
+        characterMovement = GetComponent<CharacterMovement>();
     }
 
     protected virtual void Update()
@@ -23,6 +25,7 @@ public class CharacterComponents : MonoBehaviour
     protected virtual void HandleAbility()
     {
         InternalInput();
+        HandleInput();
     }
 
     // Here we get the necessary input we need to perform our actions    
