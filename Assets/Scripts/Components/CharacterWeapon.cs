@@ -47,6 +47,10 @@ public class CharacterWeapon : CharacterComponents
         }
 
         CurrentWeapon.TriggerShot();
+        if (character.CharacterType == Character.CharacterTypes.Player)
+        {
+            UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);
+        }
     }
 
     // When we stop shooting we stop using our Weapon
@@ -68,6 +72,11 @@ public class CharacterWeapon : CharacterComponents
         }
 
         CurrentWeapon.Reload();
+        if (character.CharacterType == Character.CharacterTypes.Player)
+        {
+            UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);
+        }
+
     }
 
     public void EquipWeapon(Weapon weapon, Transform weaponPosition)
@@ -76,5 +85,10 @@ public class CharacterWeapon : CharacterComponents
         CurrentWeapon.transform.parent = weaponPosition;
         CurrentWeapon.SetOwner(character);
         WeaponAim = CurrentWeapon.GetComponent<WeaponAim>();
+
+        if (character.CharacterType == Character.CharacterTypes.Player)
+        {
+            UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);
+        }
     }
 }
