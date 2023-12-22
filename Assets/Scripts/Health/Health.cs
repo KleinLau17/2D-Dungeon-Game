@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
     [SerializeField] private bool destroyObject;
 
     private Character character;
-    private CharacterController controller; // we need to disable the character. So, that it cannot move anymore//
+    private CharacterController controller;
     private Collider2D collider2D;
     private SpriteRenderer spriteRenderer;
 
@@ -23,11 +23,12 @@ public class Health : MonoBehaviour
     private void Awake()
     {
         character = GetComponent<Character>();
-        controller = GetComponent<CharacterController>(); // Get the CharacterController Component//
+        controller = GetComponent<CharacterController>();
         collider2D = GetComponent<Collider2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         CurrentHealth = initialHealth;
+        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth);
     }
 
     private void Update()
@@ -47,6 +48,7 @@ public class Health : MonoBehaviour
         }
 
         CurrentHealth -= damage;
+        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth);
 
         if (CurrentHealth <= 0)
         {
@@ -55,7 +57,7 @@ public class Health : MonoBehaviour
     }
 
     // Kills the game object
-    private void Die() // Update the die method //
+    private void Die()
     {
         if (character != null)
         {
@@ -63,8 +65,7 @@ public class Health : MonoBehaviour
             spriteRenderer.enabled = false;
 
             character.enabled = false;
-            controller.enabled = false; // When the die method is called (character die); we disable the character and controller//
-
+            controller.enabled = false;
         }
 
         if (destroyObject)
@@ -82,12 +83,13 @@ public class Health : MonoBehaviour
             spriteRenderer.enabled = true;
 
             character.enabled = true;
-            controller.enabled = true; // When we revive; we set the character and controller true//
+            controller.enabled = true;
         }
 
         gameObject.SetActive(true);
 
-        CurrentHealth = initialHealth;// update the current health once the character is revived //
+        CurrentHealth = initialHealth;
+        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth);
     }
 
     // If destroyObject is selected, we destroy this game object
