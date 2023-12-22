@@ -9,11 +9,13 @@ public class CharacterComponents : MonoBehaviour
 
     protected CharacterController controller;
     protected CharacterMovement characterMovement;
+    protected Animator animator;
 
     protected virtual void Start()
     {
         controller = GetComponent<CharacterController>();
         characterMovement = GetComponent<CharacterMovement>();
+        animator = GetComponent<Animator>();
     }
 
     protected virtual void Update()
