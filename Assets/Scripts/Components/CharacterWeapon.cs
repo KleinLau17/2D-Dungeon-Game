@@ -25,25 +25,52 @@ public class CharacterWeapon : CharacterComponents
             Shoot();
         }
 
+        if (Input.GetMouseButtonUp(0))  // If we stop shooting
+        {
+            StopWeapon();
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             Reload();
         }
     }
 
-    private void Shoot()
+    public void Shoot()
     {
+        if (CurrentWeapon == null)
+        {
+            return;
+        }
 
+        CurrentWeapon.TriggerShot();
     }
 
-    private void Reload()
+    // When we stop shooting we stop using our Weapon
+    public void StopWeapon()
     {
+        if (CurrentWeapon == null)
+        {
+            return;
+        }
 
+        CurrentWeapon.StopWeapon();
     }
 
-    private void EquipWeapon(Weapon weapon, Transform weaponPosition)
+    public void Reload()
+    {
+        if (CurrentWeapon == null)
+        {
+            return;
+        }
+
+        CurrentWeapon.Reload();
+    }
+
+    public void EquipWeapon(Weapon weapon, Transform weaponPosition)
     {
         CurrentWeapon = Instantiate(weapon, weaponPosition.position, weaponPosition.rotation);
         CurrentWeapon.transform.parent = weaponPosition;
+        CurrentWeapon.SetOwner(character);
     }
 }

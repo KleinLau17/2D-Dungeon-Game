@@ -14,6 +14,14 @@ public class CharacterFlip : CharacterComponents
     [SerializeField] private FlipMode flipMode = FlipMode.MovementDirection;
     [SerializeField] private float threshold = 0.1f;
 
+    // Returns if our character is facing Right
+    public bool FacingRight { get; set; }
+
+    private void Awake()
+    {
+        FacingRight = true;
+    }
+
     protected override void HandleAbility()
     {
         base.HandleAbility();
@@ -56,10 +64,13 @@ public class CharacterFlip : CharacterComponents
         if (newDirection == 1)
         {
             transform.localScale = new Vector3(1, 1, 1);
+            FacingRight = true;
         }
         else
         {
             transform.localScale = new Vector3(-1, 1, 1);
+            FacingRight = false;
         }
     }
 }
+

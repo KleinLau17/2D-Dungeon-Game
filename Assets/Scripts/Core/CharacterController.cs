@@ -12,6 +12,7 @@ public class CharacterController : MonoBehaviour
 
     // Internal
     private Rigidbody2D myRigidbody2D;
+    private Vector2 recoilMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,8 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Recoil();
+
         if (NormalMovement)
         {
             MoveCharacter();
@@ -35,6 +38,11 @@ public class CharacterController : MonoBehaviour
         myRigidbody2D.MovePosition(currentMovePosition);
     }
 
+    public void ApplyRecoil(Vector2 recoilDirection, float recoilForce)
+    {
+        recoilMovement = recoilDirection.normalized * recoilForce;
+    }
+
     // Extra Move in case we need it    
     public void MovePosition(Vector2 newPosition)
     {
@@ -45,5 +53,13 @@ public class CharacterController : MonoBehaviour
     public void SetMovement(Vector2 newPosition)
     {
         CurrentMovement = newPosition;
+    }
+
+    private void Recoil()
+    {
+        if (recoilMovement.magnitude > 0.1f)
+        {
+            myRigidbody2D.AddForce(recoilMovement);
+        }
     }
 }
