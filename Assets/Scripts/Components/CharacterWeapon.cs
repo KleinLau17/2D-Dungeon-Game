@@ -12,6 +12,9 @@ public class CharacterWeapon : CharacterComponents
     // Reference of the Weapon we are using
     public Weapon CurrentWeapon { get; set; }
 
+    // Returns the reference to our Current Weapon Aim
+    public WeaponAim WeaponAim { get; set; }
+
     protected override void Start()
     {
         base.Start();
@@ -72,5 +75,6 @@ public class CharacterWeapon : CharacterComponents
         CurrentWeapon = Instantiate(weapon, weaponPosition.position, weaponPosition.rotation);
         CurrentWeapon.transform.parent = weaponPosition;
         CurrentWeapon.SetOwner(character);
+        WeaponAim = CurrentWeapon.GetComponent<WeaponAim>();
     }
 }

@@ -55,7 +55,18 @@ public class CharacterFlip : CharacterComponents
     // Flips our character by our Weapon Aiming
     private void FlipToWeaponDirection()
     {
-
+        if (characterWeapon != null)
+        {
+            float weaponAngle = characterWeapon.WeaponAim.CurrentAimAngleAbsolute;
+            if (weaponAngle > 90 || weaponAngle < -90)
+            {
+                FaceDirection(-1);
+            }
+            else
+            {
+                FaceDirection(1);
+            }
+        }
     }
 
     // Makes our character face the direction in which is moving
@@ -73,4 +84,3 @@ public class CharacterFlip : CharacterComponents
         }
     }
 }
-
