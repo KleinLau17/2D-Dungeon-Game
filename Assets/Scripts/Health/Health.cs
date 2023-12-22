@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
     [SerializeField] private bool destroyObject;
 
     private Character character;
+    private CharacterController controller; // we need to disable the character. So, that it cannot move anymore//
     private Collider2D collider2D;
     private SpriteRenderer spriteRenderer;
 
@@ -22,6 +23,7 @@ public class Health : MonoBehaviour
     private void Awake()
     {
         character = GetComponent<Character>();
+        controller = GetComponent<CharacterController>(); // Get the CharacterController Component//
         collider2D = GetComponent<Collider2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
@@ -53,12 +55,16 @@ public class Health : MonoBehaviour
     }
 
     // Kills the game object
-    private void Die()
+    private void Die() // Update the die method //
     {
         if (character != null)
         {
             collider2D.enabled = false;
             spriteRenderer.enabled = false;
+
+            character.enabled = false;
+            controller.enabled = false; // When the die method is called (character die); we disable the character and controller//
+
         }
 
         if (destroyObject)
@@ -70,7 +76,18 @@ public class Health : MonoBehaviour
     // Revive this game object    
     public void Revive()
     {
+        if (character != null)
+        {
+            collider2D.enabled = true;
+            spriteRenderer.enabled = true;
 
+            character.enabled = true;
+            controller.enabled = true; // When we revive; we set the character and controller true//
+        }
+
+        gameObject.SetActive(true);
+
+        CurrentHealth = initialHealth;// update the current health once the character is revived //
     }
 
     // If destroyObject is selected, we destroy this game object
