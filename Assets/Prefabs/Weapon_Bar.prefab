@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1563851734683317382}
   - component: {fileID: -8440043987612633643}
   - component: {fileID: -3746247286631489059}
+  - component: {fileID: 7783941461391544914}
   m_Layer: 0
   m_Name: Weapon_Bar
   m_TagString: Untagged
@@ -50,6 +51,8 @@ MonoBehaviour:
   useMagazine: 1
   magazineSize: 30
   autoReload: 1
+  useRecoil: 1
+  recoilForce: 50
 --- !u!114 &-3746247286631489059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +65,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6d8431cc84af24fb05e2231d308857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7783941461391544914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921638288824786465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d6a6d928041d4e49990d134f22f5de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reticlePrefab: {fileID: 1873395361155764485, guid: 42835777934e0c941afdd21b2dd21d3e, type: 3}
 --- !u!1 &2967969146868573927
 GameObject:
   m_ObjectHideFlags: 0
