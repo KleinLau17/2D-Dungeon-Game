@@ -54,7 +54,7 @@ public class Projectile : MonoBehaviour
     {
         if (spriteRenderer != null)
         {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            spriteRenderer.flipY = !spriteRenderer.flipY;
         }
     }
 
@@ -63,16 +63,22 @@ public class Projectile : MonoBehaviour
     {
         Direction = newDirection;
 
-        if (FacingRight != isFacingRight)
-        {
-            FlipProjectile();
-        }
-
         // 将原始旋转乘以一个额外的旋转，使其旋转90度
         Quaternion additionalRotation = Quaternion.Euler(0, 0, -90);
         Quaternion newRotation = rotation * additionalRotation;
 
         transform.rotation = newRotation;
+
+        if (FacingRight != isFacingRight)
+        {
+            FlipProjectile();
+        }
+
+
+    }
+
+    public void ResetProjectile()
+    {
+        spriteRenderer.flipY = false;
     }
 }
-
