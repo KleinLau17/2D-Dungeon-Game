@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -3746247286631489059}
   - component: {fileID: 7783941461391544914}
   - component: {fileID: 739967689420736536}
+  - component: {fileID: 1261126453518709331}
   m_Layer: 0
   m_Name: Weapon_Bar
   m_TagString: Untagged
@@ -79,6 +80,21 @@ MonoBehaviour:
   useRecoil: 1
   recoilForce: 30
   projectileSpawnPosition: {x: 1.31, y: 0.27, z: 0}
+--- !u!114 &1261126453518709331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921638288824786465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ba341a984870f48bd217e1e84e10e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefab: {fileID: 4174975015257265328, guid: b1e5ea80ca5b8b94aba2b96028e4d8a8, type: 3}
+  poolSize: 10
+  poolCanExpand: 1
 --- !u!1 &2967969146868573927
 GameObject:
   m_ObjectHideFlags: 0
