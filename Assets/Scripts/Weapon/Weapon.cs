@@ -106,7 +106,7 @@ public class Weapon : MonoBehaviour
 
         WeaponAmmo.ConsumeAmmo();
 
-        CanShoot = false;
+        //CanShoot = false;  //Remove this line
     }
 
     // Apply a force to our movement when we shoot
@@ -130,7 +130,7 @@ public class Weapon : MonoBehaviour
     {
         if (Time.time > nextShotTime)  //Actual time in the game GREATER THAN fire rate
         {
-            CanShoot = true;
+            CanShoot = true;  //Here we have set CanShoot is TRUE, that¡¯s why we remove a command line at RequestShot()
             nextShotTime = Time.time + timeBtwShots;
         }
     }

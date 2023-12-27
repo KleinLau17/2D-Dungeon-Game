@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float speed = 30f;
+    [SerializeField] private float speed = 100f;
     [SerializeField] private float acceleration = 0f;
 
     // Returns the direction of this projectile    
@@ -25,11 +25,10 @@ public class Projectile : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector2 movement;
 
-    private void Start()
+    private void Awake()
     {
         Speed = speed;
         FacingRight = true;
-        Direction = Vector2.right;  // This line is for testing purposes, DELETE if not necessary
 
         myRigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -69,6 +68,15 @@ public class Projectile : MonoBehaviour
             FlipProjectile();
         }
 
-        transform.rotation = rotation;
+        // 将原始旋转乘以一个额外的旋转，使其旋转90度
+        Quaternion additionalRotation = Quaternion.Euler(0, 0, -90);
+        if (spriteRenderer != null)
+        {
+            additionalRotation = Quaternion.Euler(0, 0, 0);
+        }
+        Quaternion newRotation = rotation * additionalRotation;
+
+        transform.rotation = newRotation;
     }
 }
+

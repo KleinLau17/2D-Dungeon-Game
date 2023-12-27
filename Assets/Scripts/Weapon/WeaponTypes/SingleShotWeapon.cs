@@ -10,13 +10,17 @@ public class SingleShotWeapon : Weapon
     // Controls the position of our projectile spawn
     public Vector3 ProjectileSpawnPosition { get; set; }
 
+    // Returns the reference to the pooler in this GameObject
+    public ObjectPooler Pooler { get; set; }
+
     private Vector3 projectileSpawnValue;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         projectileSpawnValue = projectileSpawnPosition;
         projectileSpawnValue.y = -projectileSpawnPosition.y;
+
+        Pooler = GetComponent<ObjectPooler>();
     }
 
     protected override void Update()
@@ -27,12 +31,30 @@ public class SingleShotWeapon : Weapon
     protected override void RequestShot()
     {
         base.RequestShot();
+
+        if (CanShoot)
+        {
+            EvaluateProjectileSpawnPosition();
+            SpawnProjectile(ProjectileSpawnPosition);
+        }
     }
 
     // Spawns a projectile from the pool, setting it's new direction based on the character's direction (WeaponOwner)
     private void SpawnProjectile(Vector2 spawnPosition)
     {
+        // Get Object from the pool
+        GameObject projectilePooled = Pooler.GetObjectFromPool();
+        projectilePooled.transform.position = spawnPosition;
+        projectilePooled.SetActive(true);
 
+        // Get reference to the projectile
+        Projectile projectile = projectilePooled.GetComponent<Projectile>();
+
+        // Set direction and rotation
+        Vector2 newDirection = WeaponOwner.GetComponent<CharacterFlip>().FacingRight ? transform.right : transform.right * -1;
+        projectile.SetDirection(newDirection, transform.rotation, WeaponOwner.GetComponent<CharacterFlip>().FacingRight);
+
+        CanShoot = false;
     }
 
     // Calculates the position where our projectile is going to be fired
