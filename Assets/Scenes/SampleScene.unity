@@ -1430,7 +1430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d741940ebf41d2946b7074de42c6590d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponToUse: {fileID: -8440043987612633643, guid: 7180c516480f11b4fbe0de74b1010340, type: 3}
+  weaponToUse: {fileID: 739967689420736536, guid: 7180c516480f11b4fbe0de74b1010340, type: 3}
   weaponHolderPosition: {fileID: 2118604541}
 --- !u!1 &1478172429
 GameObject:
