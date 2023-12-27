@@ -70,10 +70,6 @@ public class Projectile : MonoBehaviour
 
         // 将原始旋转乘以一个额外的旋转，使其旋转90度
         Quaternion additionalRotation = Quaternion.Euler(0, 0, -90);
-        if (spriteRenderer != null)
-        {
-            additionalRotation = Quaternion.Euler(0, 0, 0);
-        }
         Quaternion newRotation = rotation * additionalRotation;
 
         transform.rotation = newRotation;

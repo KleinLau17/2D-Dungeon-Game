@@ -39,7 +39,7 @@ public class Weapon : MonoBehaviour
     private float nextShotTime;
     private CharacterController controller; // Because we need to know the character is facing which side for RECOIL
 
-    private void Awake()
+    protected virtual void Awake()
     {
         WeaponAmmo = GetComponent<WeaponAmmo>();
         CurrentAmmo = magazineSize;
@@ -105,8 +105,6 @@ public class Weapon : MonoBehaviour
         }
 
         WeaponAmmo.ConsumeAmmo();
-
-        //CanShoot = false;  //Remove this line
     }
 
     // Apply a force to our movement when we shoot
