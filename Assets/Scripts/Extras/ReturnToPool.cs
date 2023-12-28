@@ -6,6 +6,7 @@ using UnityEngine;
 public class ReturnToPool : MonoBehaviour
 {
     [Header("Settings")]
+    [SerializeField] private LayerMask objectMask;
     [SerializeField] private float lifeTime = 2f;
 
     private Projectile projectile;
@@ -24,6 +25,19 @@ public class ReturnToPool : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (CheckLayer(other.gameObject.layer, objectMask))
+        {
+            Return();
+        }
+    }
+
+    private bool CheckLayer(int layer, LayerMask objectMask)
+    {
+        return ((1 << layer) & objectMask) != 0;
     }
 
     private void OnEnable()
