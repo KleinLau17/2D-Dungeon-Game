@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6830628183543783228}
   - component: {fileID: 3888882940861520334}
   m_Layer: 7
-  m_Name: Jar_Component
+  m_Name: Box_Component
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 295168421
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 222476873, guid: dc82aafaf5020da48b7fe94912e314c9, type: 3}
+  m_Sprite: {fileID: -18452182, guid: dc82aafaf5020da48b7fe94912e314c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b610cf64ac3c1b94997c3664cad53e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialHealth: 1
-  maxHealth: 1
+  initialHealth: 3
+  maxHealth: 3
   initialShield: 0
   maxShield: 0
   destroyObject: 0
@@ -189,6 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd267ccf9acda848903a03a05f714e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagedSprite: {fileID: 0}
+  damagedSprite: {fileID: -1021083482, guid: dc82aafaf5020da48b7fe94912e314c9, type: 3}
   damage: 1
   isDamageable: 0
