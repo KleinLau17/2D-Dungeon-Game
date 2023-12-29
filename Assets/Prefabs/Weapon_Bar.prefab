@@ -16,7 +16,7 @@ GameObject:
   m_Layer: 0
   m_Name: Weapon_Bar
   m_TagString: Untagged
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -80,7 +80,7 @@ MonoBehaviour:
   autoReload: 1
   useRecoil: 1
   recoilForce: 30
-  muzzlePS: {fileID: 645007150280059333, guid: dbf85db1ce7b1604e9c5eaef987a5181, type: 3}
+  muzzlePS: {fileID: 2280552968057974843}
   projectileSpawnPosition: {x: 1.31, y: 0.27, z: 0}
   projectileSpread: {x: 0, y: 0, z: 5}
 --- !u!114 &1261126453518709331
@@ -250,7 +250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 645007150280059334, guid: dbf85db1ce7b1604e9c5eaef987a5181, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 645007150280059334, guid: dbf85db1ce7b1604e9c5eaef987a5181, type: 3}
       propertyPath: m_LocalRotation.w
@@ -281,6 +281,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 645007150280059339, guid: dbf85db1ce7b1604e9c5eaef987a5181, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 645007150280059339, guid: dbf85db1ce7b1604e9c5eaef987a5181, type: 3}
       propertyPath: m_Name
       value: Muzzle - PS
       objectReference: {fileID: 0}
@@ -292,5 +296,10 @@ PrefabInstance:
 --- !u!4 &2280552968057974840 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 645007150280059334, guid: dbf85db1ce7b1604e9c5eaef987a5181, type: 3}
+  m_PrefabInstance: {fileID: 1681426243478182398}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2280552968057974843 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 645007150280059333, guid: dbf85db1ce7b1604e9c5eaef987a5181, type: 3}
   m_PrefabInstance: {fileID: 1681426243478182398}
   m_PrefabAsset: {fileID: 0}

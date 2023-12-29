@@ -21,18 +21,12 @@ public class SingleShotWeapon : Weapon
     protected override void Awake()
     {
         base.Awake();
+
         projectileSpawnValue = projectileSpawnPosition;
         projectileSpawnValue.y = -projectileSpawnPosition.y;
 
         Pooler = GetComponent<ObjectPooler>();
     }
-
-    /*    REMOVE this Update method because we are inheriting the Weapon class & use Awake method
-    protected override void Update ()
-    {
-	  base.Update();
-}
-*/
 
     protected override void RequestShot()
     {
@@ -55,6 +49,7 @@ public class SingleShotWeapon : Weapon
 
         // Get reference to the projectile
         Projectile projectile = projectilePooled.GetComponent<Projectile>();
+        projectile.EnableProjectile();
 
         // Spread
         randomProjectileSpread.z = Random.Range(-projectileSpread.z, projectileSpread.z);

@@ -24,11 +24,13 @@ public class Projectile : MonoBehaviour
     private Collider2D collider2D;
     private SpriteRenderer spriteRenderer;
     private Vector2 movement;
+    private bool canMove;
 
     private void Awake()
     {
         Speed = speed;
         FacingRight = true;
+        canMove = true;
 
         myRigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -37,7 +39,10 @@ public class Projectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MoveProjectile();
+        if (canMove)
+        {
+            MoveProjectile();
+        }
     }
 
     // Moves this projectile  
@@ -61,6 +66,7 @@ public class Projectile : MonoBehaviour
     // Set the direction and rotation in order to move  
     public void SetDirection(Vector2 newDirection, Quaternion rotation, bool isFacingRight = true)
     {
+
         Direction = newDirection;
 
         // 将原始旋转乘以一个额外的旋转，使其旋转90度
@@ -73,12 +79,24 @@ public class Projectile : MonoBehaviour
         {
             FlipProjectile();
         }
-
-
     }
 
     public void ResetProjectile()
     {
         spriteRenderer.flipY = false;
+    }
+
+    public void DisableProjectile()
+    {
+        canMove = false;
+        spriteRenderer.enabled = false;  // If we don’t disable the spriteRenderer, the bullet will fall down before disappear
+        collider2D.enabled = false;
+    }
+
+    public void EnableProjectile()
+    {
+        canMove = true;
+        spriteRenderer.enabled = true;
+        collider2D.enabled = true;
     }
 }
