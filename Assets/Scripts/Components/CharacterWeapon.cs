@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CharacterWeapon : CharacterComponents
 {
+    public static Action OnStartShooting;
+
     [Header("Weapon Settings")]
     [SerializeField] private Weapon weaponToUse;
     [SerializeField] private Transform weaponHolderPosition;
@@ -49,6 +51,7 @@ public class CharacterWeapon : CharacterComponents
         CurrentWeapon.TriggerShot();
         if (character.CharacterType == Character.CharacterTypes.Player)
         {
+            OnStartShooting?.Invoke();
             UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);
         }
     }
