@@ -191,4 +191,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagedSprite: {fileID: -1021083482, guid: dc82aafaf5020da48b7fe94912e314c9, type: 3}
   damage: 1
-  isDamageable: 0
+  isDamageable: 1
