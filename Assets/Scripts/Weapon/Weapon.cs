@@ -17,6 +17,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] private bool useRecoil = true;
     [SerializeField] private int recoilForce = 30;
 
+    [Header("Effects")]
+    [SerializeField] private ParticleSystem muzzlePS;
+
     // Reference of the Character that controls this Weapon
     public Character WeaponOwner { get; set; }
 
@@ -105,6 +108,7 @@ public class Weapon : MonoBehaviour
         }
 
         WeaponAmmo.ConsumeAmmo();
+        muzzlePS.Play();
     }
 
     // Apply a force to our movement when we shoot
@@ -128,7 +132,7 @@ public class Weapon : MonoBehaviour
     {
         if (Time.time > nextShotTime)  //Actual time in the game GREATER THAN fire rate
         {
-            CanShoot = true;  //Here we have set CanShoot is TRUE, that¡¯s why we remove a command line at RequestShot()
+            CanShoot = true;
             nextShotTime = Time.time + timeBtwShots;
         }
     }
