@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -43,6 +44,9 @@ TagManager:
     locked: 0
   - name: Map
     uniqueID: 866179873
+    locked: 0
+  - name: LevelComponents
+    uniqueID: 295168421
     locked: 0
   - name: Player
     uniqueID: 1083311977

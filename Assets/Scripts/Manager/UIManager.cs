@@ -20,6 +20,7 @@ public class UIManager : Singleton<UIManager>
     private float playerMaxHealth;
     private float playerMaxShield;
     private float playerCurrentShield;
+    private bool isPlayer;
 
     private int playerCurrentAmmo;
     private int playerMaxAmmo;
@@ -29,12 +30,13 @@ public class UIManager : Singleton<UIManager>
         InternalUpdate();
     }
 
-    public void UpdateHealth(float currentHealth, float maxHealth, float currentShield, float maxShield)
+    public void UpdateHealth(float currentHealth, float maxHealth, float currentShield, float maxShield, bool isThisMyPlayer)
     {
         playerCurrentHealth = currentHealth;
         playerMaxHealth = maxHealth;
         playerCurrentShield = currentShield;
         playerMaxShield = maxShield;
+        isPlayer = isThisMyPlayer;
     }
 
     public void UpdateAmmo(int currentAmmo, int maxAmmo)
@@ -45,11 +47,14 @@ public class UIManager : Singleton<UIManager>
 
     private void InternalUpdate()
     {
-        healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, playerCurrentHealth / playerMaxHealth, 10f * Time.deltaTime);
-        currentHealthTMP.text = playerCurrentHealth.ToString() + "/" + playerMaxHealth.ToString();
+        if (isPlayer)
+        {
+            healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, playerCurrentHealth / playerMaxHealth, 10f * Time.deltaTime);
+            currentHealthTMP.text = playerCurrentHealth.ToString() + "/" + playerMaxHealth.ToString();
 
-        shieldBar.fillAmount = Mathf.Lerp(shieldBar.fillAmount, playerCurrentShield / playerMaxShield, 10f * Time.deltaTime);
-        currentShieldTMP.text = playerCurrentShield.ToString() + "/" + playerMaxShield.ToString();
+            shieldBar.fillAmount = Mathf.Lerp(shieldBar.fillAmount, playerCurrentShield / playerMaxShield, 10f * Time.deltaTime);
+            currentShieldTMP.text = playerCurrentShield.ToString() + "/" + playerMaxShield.ToString();
+        }
 
         // Update Ammo
         currentAmmoTMP.text = playerCurrentAmmo + " / " + playerMaxAmmo;
