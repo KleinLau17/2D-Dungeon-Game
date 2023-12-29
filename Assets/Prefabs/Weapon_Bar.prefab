@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7783941461391544914}
   - component: {fileID: 739967689420736536}
   - component: {fileID: 1261126453518709331}
+  - component: {fileID: 6177752916472546194}
   m_Layer: 0
   m_Name: Weapon_Bar
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 921638288824786465}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.26, y: 0.854, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -98,6 +99,27 @@ MonoBehaviour:
   objectPrefab: {fileID: 4174975015257265328, guid: b1e5ea80ca5b8b94aba2b96028e4d8a8, type: 3}
   poolSize: 10
   poolCanExpand: 1
+--- !u!95 &6177752916472546194
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921638288824786465}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b80fd31900e2397479d790b64aef4919, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2967969146868573927
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,11 +41,14 @@ public class Weapon : MonoBehaviour
     // Internal
     private float nextShotTime;
     private CharacterController controller; // Because we need to know the character is facing which side for RECOIL
+    private Animator animator;
+    private readonly int weaponUseParameter = Animator.StringToHash("WeaponUse");
 
     protected virtual void Awake()
     {
         WeaponAmmo = GetComponent<WeaponAmmo>();
         CurrentAmmo = magazineSize;
+        animator = GetComponent<Animator>();
     }
 
     protected virtual void Update()
@@ -107,6 +110,7 @@ public class Weapon : MonoBehaviour
             Recoil();
         }
 
+        animator.SetTrigger(weaponUseParameter);
         WeaponAmmo.ConsumeAmmo();
         muzzlePS.Play();
     }
