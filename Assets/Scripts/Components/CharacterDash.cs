@@ -48,6 +48,7 @@ public class CharacterDash : CharacterComponents
         dashOrigin = transform.position;
 
         dashDestination = transform.position + (Vector3)controller.CurrentMovement.normalized * dashDistance;
+        SoundManager.Instance.PlaySound(SoundManager.Instance.DashClip, 0.6f);
     }
 
     private void StopDash()

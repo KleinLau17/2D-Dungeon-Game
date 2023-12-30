@@ -9,19 +9,17 @@ public class CHealth : Collectables
 
     protected override void Pick()
     {
-        AddHealth();
+        AddHealth(character);
     }
 
     protected override void PlayEffects()
     {
         Instantiate(healthBonus, transform.position, Quaternion.identity);
+        SoundManager.Instance.PlaySound(SoundManager.Instance.ItemClip, 0.6f);
     }
 
-    public void AddHealth()
+    public void AddHealth(Character character)
     {
-        if (character != null)
-        {
-            character.GetComponent<Health>().GainHealth(healthToAdd);
-        }
+        character.GetComponent<Health>().GainHealth(healthToAdd);
     }
 }

@@ -13,4 +13,9 @@ public class CCoin : Collectables
     {
         CoinManager.Instance.AddCoins(coinsToAdd);
     }
+
+    protected override void PlayEffects()
+    {
+        SoundManager.Instance.PlaySound(SoundManager.Instance.CoinClip, 0.6f);
+    }
 }

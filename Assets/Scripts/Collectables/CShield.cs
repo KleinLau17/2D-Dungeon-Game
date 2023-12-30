@@ -9,19 +9,18 @@ public class CShield : Collectables
 
     protected override void Pick()
     {
-        AddShield();
+        AddShield(character);
     }
 
     protected override void PlayEffects()
     {
         Instantiate(shieldEffect, transform.position, Quaternion.identity);
+        SoundManager.Instance.PlaySound(SoundManager.Instance.ItemClip, 0.6f);
     }
 
-    public void AddShield()
+    public void AddShield(Character characterHealth)
     {
-        if (character != null)
-        {
-            character.GetComponent<Health>().GainShield(shieldToAdd);
-        }
+        characterHealth.GetComponent<Health>().GainShield(shieldToAdd);
     }
 }
+
