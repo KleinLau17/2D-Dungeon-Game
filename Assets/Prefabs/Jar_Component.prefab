@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7918461229093468993}
   - component: {fileID: 6830628183543783228}
   - component: {fileID: 3888882940861520334}
+  - component: {fileID: -4644352076761661315}
   m_Layer: 7
   m_Name: Jar_Component
   m_TagString: Untagged
@@ -192,3 +193,22 @@ MonoBehaviour:
   damagedSprite: {fileID: -461736509, guid: dc82aafaf5020da48b7fe94912e314c9, type: 3}
   damage: 1
   isDamageable: 0
+--- !u!114 &-4644352076761661315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7331731046300349475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c0c39c3dc555c4b94087186bddbc7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xRandomPosition: 2
+  yRandomPosition: 2
+  chanceToDrop: 50
+  rewards:
+  - {fileID: 8889446650925517920, guid: 4557fa0afb3c9a14ab3b28db6ce2a96b, type: 3}
+  - {fileID: 8889446650925517920, guid: e2aada84f9e186d4fb13be71bdb6d5d9, type: 3}
+  - {fileID: 8889446650925517920, guid: cc0cc9052f2579141a5767f86e0a487b, type: 3}
