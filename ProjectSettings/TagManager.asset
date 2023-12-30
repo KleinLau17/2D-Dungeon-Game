@@ -51,8 +51,14 @@ TagManager:
   - name: Collectable
     uniqueID: 4136371673
     locked: 0
+  - name: NPC
+    uniqueID: 3301687599
+    locked: 0
   - name: Player
     uniqueID: 1083311977
+    locked: 0
+  - name: Enemy
+    uniqueID: 2210436195
     locked: 0
   - name: Projectile
     uniqueID: 1580733031
