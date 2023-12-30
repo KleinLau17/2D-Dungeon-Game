@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b2d68b71c5ee9e469a3b308b8475fc1, type: 3}
-  m_Name: DecisionTest
+  m_Script: {fileID: 11500000, guid: 74eec1a8c96580948a61059bec87ad9a, type: 3}
+  m_Name: ActionFollow
   m_EditorClassIdentifier: 
