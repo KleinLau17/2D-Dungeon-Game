@@ -13,11 +13,14 @@ public class StateController : MonoBehaviour
     public CharacterMovement CharacterMovement { get; set; }
     // Returns a reference to this enemy path
     public Path Path { get; set; }
+    // Returns the collider of this enemy
+    public Collider2D Collider2D { get; set; }
 
     private void Awake()
     {
         CharacterMovement = GetComponent<CharacterMovement>();
         Path = GetComponent<Path>();
+        Collider2D = GetComponent<Collider2D>();
     }
     private void Update()
     {
