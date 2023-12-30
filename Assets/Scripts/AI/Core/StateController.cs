@@ -11,6 +11,8 @@ public class StateController : MonoBehaviour
     public Transform Target { get; set; }
     // Returns a reference to this enemy movement
     public CharacterMovement CharacterMovement { get; set; }
+    // Returns this character weapon
+    public CharacterWeapon CharacterWeapon { get; set; }
     // Returns a reference to this enemy path
     public Path Path { get; set; }
     // Returns the collider of this enemy
@@ -19,6 +21,7 @@ public class StateController : MonoBehaviour
     private void Awake()
     {
         CharacterMovement = GetComponent<CharacterMovement>();
+        CharacterWeapon = GetComponent<CharacterWeapon>();
         Path = GetComponent<Path>();
         Collider2D = GetComponent<Collider2D>();
     }

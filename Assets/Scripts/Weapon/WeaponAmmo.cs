@@ -7,10 +7,13 @@ public class WeaponAmmo : MonoBehaviour
 {
     private Weapon weapon;
 
-    private void Start()
+    private readonly string WEAPON_AMMO_SAVELOAD = "Weapon_";
+
+    private void Awake()  // Because we need to retrieve the update ammo value first
     {
         weapon = GetComponent<Weapon>();
-        RefillAmmo();
+        // RefillAmmo(); --- Delete this
+        LoadWeaponMagazineSize();
     }
 
     // Consume our ammo when we shoot
@@ -39,6 +42,23 @@ public class WeaponAmmo : MonoBehaviour
         if (weapon.UseMagazine)
         {
             weapon.CurrentAmmo = weapon.MagazineSize;
+            //weapon.CurrentAmmo = LoadAmmo();
         }
+    }
+
+    public void LoadWeaponMagazineSize()
+    {
+        int savedAmmo = LoadAmmo();
+        weapon.CurrentAmmo = savedAmmo < weapon.MagazineSize ? LoadAmmo() : weapon.MagazineSize;
+    }
+
+    public void SaveAmmo()
+    {
+        PlayerPrefs.SetInt(WEAPON_AMMO_SAVELOAD + weapon.WeaponName, weapon.CurrentAmmo);
+    }
+
+    public int LoadAmmo()
+    {
+        return PlayerPrefs.GetInt(WEAPON_AMMO_SAVELOAD + weapon.WeaponName, weapon.MagazineSize);
     }
 }
