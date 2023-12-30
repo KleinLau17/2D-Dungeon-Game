@@ -45,7 +45,6 @@ public class Health : MonoBehaviour
             isPlayer = character.CharacterType == Character.CharacterTypes.Player;
         }
 
-        //UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
         UpdateCharacterHealth();
     }
 
@@ -69,7 +68,6 @@ public class Health : MonoBehaviour
         {
             CurrentShield -= damage;
 
-            //UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
             UpdateCharacterHealth();
 
             if (CurrentShield <= 0)
@@ -81,7 +79,6 @@ public class Health : MonoBehaviour
 
         CurrentHealth -= damage;
 
-        //UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
         UpdateCharacterHealth();
 
         if (CurrentHealth <= 0)
@@ -127,13 +124,18 @@ public class Health : MonoBehaviour
 
         shieldBroken = false;
 
-        //UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
         UpdateCharacterHealth();
     }
 
     public void GainHealth(int amount)
     {
-        CurrentHealth = Mathf.Min(CurrentHealth + amount, maxHealth); //Logic if full HP, cannot add anymore
+        CurrentHealth = Mathf.Min(CurrentHealth + amount, maxHealth);
+        UpdateCharacterHealth();
+    }
+
+    public void GainShield(int amount)
+    {
+        CurrentShield = Mathf.Min(CurrentShield + amount, maxShield);
         UpdateCharacterHealth();
     }
 
