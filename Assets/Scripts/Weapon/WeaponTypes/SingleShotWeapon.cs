@@ -50,6 +50,7 @@ public class SingleShotWeapon : Weapon
         // Get reference to the projectile
         Projectile projectile = projectilePooled.GetComponent<Projectile>();
         projectile.EnableProjectile();
+        projectile.ProjectileOwner = WeaponOwner;
 
         // Spread
         randomProjectileSpread.z = Random.Range(-projectileSpread.z, projectileSpread.z);
@@ -59,6 +60,9 @@ public class SingleShotWeapon : Weapon
         Vector2 newDirection = WeaponOwner.GetComponent<CharacterFlip>().FacingRight ? spread * transform.right : spread * transform.right * -1;
         projectile.SetDirection(newDirection, transform.rotation, WeaponOwner.GetComponent<CharacterFlip>().FacingRight);
 
+        SoundManager.Instance.PlaySound(SoundManager.Instance.ShootClip, 0.8f);
+
+        // Disable shot after next shot time
         CanShoot = false;
     }
 
