@@ -45,7 +45,8 @@ public class Health : MonoBehaviour
             isPlayer = character.CharacterType == Character.CharacterTypes.Player;
         }
 
-        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+        //UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+        UpdateCharacterHealth();
     }
 
     private void Update()
@@ -67,7 +68,9 @@ public class Health : MonoBehaviour
         if (!shieldBroken && character != null)
         {
             CurrentShield -= damage;
-            UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+
+            //UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+            UpdateCharacterHealth();
 
             if (CurrentShield <= 0)
             {
@@ -77,7 +80,9 @@ public class Health : MonoBehaviour
         }
 
         CurrentHealth -= damage;
-        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+
+        //UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+        UpdateCharacterHealth();
 
         if (CurrentHealth <= 0)
         {
@@ -122,12 +127,28 @@ public class Health : MonoBehaviour
 
         shieldBroken = false;
 
-        UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+        //UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+        UpdateCharacterHealth();
+    }
+
+    public void GainHealth(int amount)
+    {
+        CurrentHealth = Mathf.Min(CurrentHealth + amount, maxHealth); //Logic if full HP, cannot add anymore
+        UpdateCharacterHealth();
     }
 
     // If destroyObject is selected, we destroy this game object
     private void DestroyObject()
     {
         gameObject.SetActive(false);
+    }
+
+    private void UpdateCharacterHealth()
+    {
+        // Update Player health
+        if (character != null)
+        {
+            UIManager.Instance.UpdateHealth(CurrentHealth, maxHealth, CurrentShield, maxShield, isPlayer);
+        }
     }
 }

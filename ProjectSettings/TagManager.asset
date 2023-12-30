@@ -48,6 +48,9 @@ TagManager:
   - name: LevelComponents
     uniqueID: 295168421
     locked: 0
+  - name: Collectable
+    uniqueID: 4136371673
+    locked: 0
   - name: Player
     uniqueID: 1083311977
     locked: 0
